@@ -2,16 +2,18 @@ package com.crudPost.Post.Controller;
 
 import com.crudPost.Post.Dto.Board;
 import com.crudPost.Post.Dto.LoginInfo;
+import com.crudPost.Post.Dto.User;
 import com.crudPost.Post.Service.BoardService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,7 +27,6 @@ public class PostController {
     // http://localhost:8080/-> "list" 0 (forward) 800
     // classpath: /templates/list.html|
     // 뒤에 .html 은 알아서 붙혀준다.
-
     // 맨 처음 리스트
     @GetMapping("/")
     public String list(@RequestParam(name="page", defaultValue = "1") int page,
@@ -162,5 +163,8 @@ public class PostController {
         boardService.updateBoard(boardId, title, content);
         return "redirect:/board?boardId=" + boardId; // 수정된 글 보기로 리다이렉트한다.
     }
+
+
+
 
 }

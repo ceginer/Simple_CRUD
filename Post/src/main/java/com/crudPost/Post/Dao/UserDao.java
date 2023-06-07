@@ -67,7 +67,6 @@ public class UserDao {
         int userId = number.intValue();
         user.setUserId(userId);
         return user;
-
     }
 
 //    public int getLastInsertId(){
