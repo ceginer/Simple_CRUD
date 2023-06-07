@@ -131,4 +131,10 @@ public class ApiController {
         return new ResponseEntity("Delete Success",HttpStatus.OK); // 리스트 보기로 리다이렉트한다.
     }
 
+    @GetMapping("/logout")
+    public ResponseEntity logout(HttpSession httpSession){
+        // 세션에서 회원정보를 삭제한다.
+        httpSession.removeAttribute("loginInfo");
+        return new ResponseEntity("Logout Success",HttpStatus.OK);
+    }
 }
